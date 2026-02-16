@@ -25,7 +25,7 @@ class MerchantProductOfferStorageRepository extends AbstractRepository implement
     /**
      * @param array<int> $merchantIds
      *
-     * @return array<int, array<string>>
+     * @return \Generator<int, array<string>>
      */
     public function getProductConcreteSkusByMerchantIds(array $merchantIds): iterable
     {

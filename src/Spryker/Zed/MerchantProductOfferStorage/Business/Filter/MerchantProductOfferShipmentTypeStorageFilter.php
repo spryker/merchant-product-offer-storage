@@ -56,7 +56,7 @@ class MerchantProductOfferShipmentTypeStorageFilter implements MerchantProductOf
     }
 
     /**
-     * @param list<string> $merchantReferences
+     * @param array<string> $merchantReferences
      *
      * @return \Generated\Shared\Transfer\MerchantCollectionTransfer
      */
@@ -73,7 +73,7 @@ class MerchantProductOfferShipmentTypeStorageFilter implements MerchantProductOf
     /**
      * @param \Generated\Shared\Transfer\ProductOfferShipmentTypeCollectionTransfer $productOfferShipmentTypeCollectionTransfer
      *
-     * @return list<string>
+     * @return array<string>
      */
     protected function extractMerchantReferencesFromProductOfferShipmentTypeCollectionTransfer(
         ProductOfferShipmentTypeCollectionTransfer $productOfferShipmentTypeCollectionTransfer
@@ -89,7 +89,7 @@ class MerchantProductOfferShipmentTypeStorageFilter implements MerchantProductOf
     /**
      * @param \Generated\Shared\Transfer\MerchantCollectionTransfer $merchantCollectionTransfer
      *
-     * @return list<string>
+     * @return array<string>
      */
     protected function extractMerchantReferenceFromMerchantCollectionTransfer(MerchantCollectionTransfer $merchantCollectionTransfer): array
     {
@@ -103,7 +103,7 @@ class MerchantProductOfferShipmentTypeStorageFilter implements MerchantProductOf
 
     /**
      * @param \Generated\Shared\Transfer\ProductOfferShipmentTypeCollectionTransfer $productOfferShipmentTypeCollectionTransfer
-     * @param list<string> $activeMerchantReferences
+     * @param array<string> $activeMerchantReferences
      *
      * @return \Generated\Shared\Transfer\ProductOfferShipmentTypeCollectionTransfer
      */
