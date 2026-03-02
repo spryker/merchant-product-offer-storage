@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\MerchantCriteriaTransfer;
 
 interface MerchantProductOfferStorageToMerchantFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\MerchantCriteriaTransfer $merchantCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantCollectionTransfer
-     */
     public function get(MerchantCriteriaTransfer $merchantCriteriaTransfer): MerchantCollectionTransfer;
 }

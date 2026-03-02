@@ -58,9 +58,6 @@ class MerchantProductOfferStorageFacadeTest extends Unit
      */
     protected MerchantProductOfferStorageTester $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -75,9 +72,6 @@ class MerchantProductOfferStorageFacadeTest extends Unit
         $this->tester->addDependencies();
     }
 
-    /**
-     * @return void
-     */
     public function testWriteProductConcreteProductOffersStorageCollectionByMerchantEvents(): void
     {
         // Assign
@@ -106,9 +100,6 @@ class MerchantProductOfferStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCollectionByMerchantEvents(): void
     {
         // Arrange
@@ -138,9 +129,6 @@ class MerchantProductOfferStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testFilterProductOfferServicesShouldFilterOutProductOfferServicesWithInactiveMerchants(): void
     {
         // Arrange
@@ -183,9 +171,6 @@ class MerchantProductOfferStorageFacadeTest extends Unit
         $this->assertSame($productOfferTransfer->getProductOfferReferenceOrFail(), $productOfferServiceTransfers[0]->getProductOfferOrFail()->getProductOfferReferenceOrFail());
     }
 
-    /**
-     * @return void
-     */
     public function testFilterProductOfferShipmentTypeCollectionFiltersOutProductOfferShipmentTypesWithInactiveMerchantReferences(): void
     {
         // Arrange
@@ -222,9 +207,6 @@ class MerchantProductOfferStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testFilterProductOfferShipmentTypeCollectionDoesNotFilterOutProductOfferShipmentTypesWithoutMerchantReferences(): void
     {
         // Arrange
@@ -244,9 +226,6 @@ class MerchantProductOfferStorageFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testFilterProductOfferShipmentTypeCollectionFiltersOutProductOfferShipmentTypesWithInactiveMerchantReferencesAndLeavesOnesWithoutMerchantReferences(): void
     {
         // Arrange

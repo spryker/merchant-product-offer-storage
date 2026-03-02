@@ -44,12 +44,6 @@ class ProductOfferStorageWriter implements ProductOfferStorageWriterInterface
      */
     protected MerchantProductOfferStorageConfig $merchantProductOfferStorageConfig;
 
-    /**
-     * @param \Spryker\Zed\MerchantProductOfferStorage\Dependency\Facade\MerchantProductOfferStorageToEventBehaviorFacadeInterface $eventBehaviorFacade
-     * @param \Spryker\Zed\MerchantProductOfferStorage\Persistence\MerchantProductOfferStorageRepositoryInterface $merchantProductOfferStorageRepository
-     * @param \Spryker\Zed\MerchantProductOfferStorage\Dependency\Facade\MerchantProductOfferStorageToProductOfferStorageFacadeInterface $productOfferStorageFacade
-     * @param \Spryker\Zed\MerchantProductOfferStorage\MerchantProductOfferStorageConfig $merchantProductOfferStorageConfig
-     */
     public function __construct(
         MerchantProductOfferStorageToEventBehaviorFacadeInterface $eventBehaviorFacade,
         MerchantProductOfferStorageRepositoryInterface $merchantProductOfferStorageRepository,

@@ -46,9 +46,6 @@ class MerchantProductOfferStorageTester extends Actor
      */
     protected const DEFAULT_CURRENCY = 'EUR';
 
-    /**
-     * @return void
-     */
     public function addDependencies(): void
     {
         $this->setDependency(ClientStoreDependencyProvider::PLUGINS_STORE_EXPANDER, [
@@ -56,9 +53,6 @@ class MerchantProductOfferStorageTester extends Actor
         ]);
     }
 
-    /**
-     * @return void
-     */
     public function clearProductOfferData(): void
     {
         SpyProductOfferStoreQuery::create()->deleteAll();
@@ -86,9 +80,6 @@ class MerchantProductOfferStorageTester extends Actor
         return SpyProductOfferStorageQuery::create()->findByProductOfferReference($productOfferReference);
     }
 
-    /**
-     * @return \Spryker\Client\StoreExtension\Dependency\Plugin\StoreExpanderPluginInterface
-     */
     protected function createStoreStorageStoreExpanderPluginMock(): StoreExpanderPluginInterface
     {
         $storeTransfer = (new StoreTransfer())

@@ -25,9 +25,6 @@ class MerchantProductOfferServiceStorageFilter implements MerchantProductOfferSe
      */
     protected MerchantProductOfferStorageToMerchantFacadeInterface $merchantFacade;
 
-    /**
-     * @param \Spryker\Zed\MerchantProductOfferStorage\Dependency\Facade\MerchantProductOfferStorageToMerchantFacadeInterface $merchantFacade
-     */
     public function __construct(MerchantProductOfferStorageToMerchantFacadeInterface $merchantFacade)
     {
         $this->merchantFacade = $merchantFacade;

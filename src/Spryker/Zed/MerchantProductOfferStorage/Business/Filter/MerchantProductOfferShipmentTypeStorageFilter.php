@@ -27,19 +27,11 @@ class MerchantProductOfferShipmentTypeStorageFilter implements MerchantProductOf
      */
     protected MerchantProductOfferStorageToMerchantFacadeInterface $merchantFacade;
 
-    /**
-     * @param \Spryker\Zed\MerchantProductOfferStorage\Dependency\Facade\MerchantProductOfferStorageToMerchantFacadeInterface $merchantFacade
-     */
     public function __construct(MerchantProductOfferStorageToMerchantFacadeInterface $merchantFacade)
     {
         $this->merchantFacade = $merchantFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductOfferShipmentTypeCollectionTransfer $productOfferShipmentTypeCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductOfferShipmentTypeCollectionTransfer
-     */
     public function filterProductOfferShipmentTypeCollection(
         ProductOfferShipmentTypeCollectionTransfer $productOfferShipmentTypeCollectionTransfer
     ): ProductOfferShipmentTypeCollectionTransfer {

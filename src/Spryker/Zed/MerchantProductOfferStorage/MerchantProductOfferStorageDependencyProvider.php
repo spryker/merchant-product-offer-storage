@@ -39,11 +39,6 @@ class MerchantProductOfferStorageDependencyProvider extends AbstractBundleDepend
      */
     public const PROPEL_QUERY_PRODUCT_OFFER = 'PROPEL_QUERY_PRODUCT_OFFER';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         parent::provideBusinessLayerDependencies($container);
@@ -55,11 +50,6 @@ class MerchantProductOfferStorageDependencyProvider extends AbstractBundleDepend
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = parent::providePersistenceLayerDependencies($container);
@@ -69,11 +59,6 @@ class MerchantProductOfferStorageDependencyProvider extends AbstractBundleDepend
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addEventBehaviorFacade(Container $container): Container
     {
         $container->set(static::FACADE_EVENT_BEHAVIOR, function (Container $container) {
@@ -85,11 +70,6 @@ class MerchantProductOfferStorageDependencyProvider extends AbstractBundleDepend
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductOfferPropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_QUERY_PRODUCT_OFFER, $container->factory(function () {
@@ -99,11 +79,6 @@ class MerchantProductOfferStorageDependencyProvider extends AbstractBundleDepend
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductOfferStorageFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT_OFFER_STORAGE, function (Container $container) {
@@ -115,11 +90,6 @@ class MerchantProductOfferStorageDependencyProvider extends AbstractBundleDepend
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addMerchantFacade(Container $container): Container
     {
         $container->set(static::FACADE_MERCHANT, function (Container $container) {

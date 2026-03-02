@@ -27,9 +27,6 @@ use Spryker\Zed\MerchantProductOfferStorage\MerchantProductOfferStorageDependenc
  */
 class MerchantProductOfferStorageBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\MerchantProductOfferStorage\Business\Writer\ProductConcreteOffersStorageWriterInterface
-     */
     public function createProductConcreteProductOffersStorageWriter(): ProductConcreteOffersStorageWriterInterface
     {
         return new ProductConcreteOffersStorageWriter(
@@ -39,9 +36,6 @@ class MerchantProductOfferStorageBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProductOfferStorage\Business\Writer\ProductOfferStorageWriterInterface
-     */
     public function createProductOfferStorageWriter(): ProductOfferStorageWriterInterface
     {
         return new ProductOfferStorageWriter(
@@ -52,9 +46,6 @@ class MerchantProductOfferStorageBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProductOfferStorage\Business\Filter\MerchantProductOfferServiceStorageFilterInterface
-     */
     public function createMerchantProductOfferServiceStorageFilter(): MerchantProductOfferServiceStorageFilterInterface
     {
         return new MerchantProductOfferServiceStorageFilter(
@@ -62,33 +53,21 @@ class MerchantProductOfferStorageBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProductOfferStorage\Business\Filter\MerchantProductOfferShipmentTypeStorageFilterInterface
-     */
     public function createMerchantProductOfferShipmentTypeStorageFilter(): MerchantProductOfferShipmentTypeStorageFilterInterface
     {
         return new MerchantProductOfferShipmentTypeStorageFilter($this->getMerchantFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProductOfferStorage\Dependency\Facade\MerchantProductOfferStorageToEventBehaviorFacadeInterface
-     */
     public function getEventBehaviorFacade(): MerchantProductOfferStorageToEventBehaviorFacadeInterface
     {
         return $this->getProvidedDependency(MerchantProductOfferStorageDependencyProvider::FACADE_EVENT_BEHAVIOR);
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProductOfferStorage\Dependency\Facade\MerchantProductOfferStorageToProductOfferStorageFacadeInterface
-     */
     public function getProductOfferStorageFacade(): MerchantProductOfferStorageToProductOfferStorageFacadeInterface
     {
         return $this->getProvidedDependency(MerchantProductOfferStorageDependencyProvider::FACADE_PRODUCT_OFFER_STORAGE);
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProductOfferStorage\Dependency\Facade\MerchantProductOfferStorageToMerchantFacadeInterface
-     */
     public function getMerchantFacade(): MerchantProductOfferStorageToMerchantFacadeInterface
     {
         return $this->getProvidedDependency(MerchantProductOfferStorageDependencyProvider::FACADE_MERCHANT);
