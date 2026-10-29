@@ -7,6 +7,7 @@
 
 namespace Spryker\Zed\MerchantProductOfferStorage;
 
+use Orm\Zed\Merchant\Persistence\SpyMerchantQuery;
 use Orm\Zed\ProductOffer\Persistence\SpyProductOfferQuery;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
@@ -34,10 +35,14 @@ class MerchantProductOfferStorageDependencyProvider extends AbstractBundleDepend
      */
     public const FACADE_MERCHANT = 'FACADE_MERCHANT';
 
+    public const string FACADE_EVENT = 'FACADE_EVENT';
+
     /**
      * @var string
      */
     public const PROPEL_QUERY_PRODUCT_OFFER = 'PROPEL_QUERY_PRODUCT_OFFER';
+
+    public const string PROPEL_QUERY_MERCHANT = 'PROPEL_QUERY_MERCHANT';
 
     public function provideBusinessLayerDependencies(Container $container): Container
     {
@@ -46,6 +51,7 @@ class MerchantProductOfferStorageDependencyProvider extends AbstractBundleDepend
         $container = $this->addEventBehaviorFacade($container);
         $container = $this->addProductOfferStorageFacade($container);
         $container = $this->addMerchantFacade($container);
+        $container = $this->addEventFacade($container);
 
         return $container;
     }
@@ -55,6 +61,7 @@ class MerchantProductOfferStorageDependencyProvider extends AbstractBundleDepend
         $container = parent::providePersistenceLayerDependencies($container);
 
         $container = $this->addProductOfferPropelQuery($container);
+        $container = $this->addMerchantPropelQuery($container);
 
         return $container;
     }
@@ -70,10 +77,28 @@ class MerchantProductOfferStorageDependencyProvider extends AbstractBundleDepend
         return $container;
     }
 
+    protected function addEventFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_EVENT, function (Container $container) {
+            return $container->getLocator()->event()->facade();
+        });
+
+        return $container;
+    }
+
     protected function addProductOfferPropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_QUERY_PRODUCT_OFFER, $container->factory(function () {
             return SpyProductOfferQuery::create();
+        }));
+
+        return $container;
+    }
+
+    protected function addMerchantPropelQuery(Container $container): Container
+    {
+        $container->set(static::PROPEL_QUERY_MERCHANT, $container->factory(function () {
+            return SpyMerchantQuery::create();
         }));
 
         return $container;

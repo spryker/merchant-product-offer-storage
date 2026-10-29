@@ -4,6 +4,9 @@
         <property name="fkMerchant" type="int"/>
         <property name="merchantReference" type="string"/>
         <property name="merchantSku" type="string"/>
+        <property name="idProductOffer" type="int"/>
+        <property name="productOfferReference" type="string"/>
+        <property name="concreteSku" type="string"/>
     </transfer>
 
     <transfer name="ProductOfferStorage">
@@ -13,6 +16,8 @@
 
     <transfer name="EventEntity">
         <property name="additionalValues" type="array" singular="additionalValue"/>
+        <property name="id" type="int"/>
+        <property name="modifiedColumns" type="array" singular="modifiedColumns"/>
     </transfer>
 
     <transfer name="ProductStorageCriteria">

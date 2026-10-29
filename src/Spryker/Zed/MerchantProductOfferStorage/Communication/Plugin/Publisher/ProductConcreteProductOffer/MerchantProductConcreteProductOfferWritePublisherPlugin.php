@@ -15,14 +15,17 @@ use Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface;
  * @method \Spryker\Zed\MerchantProductOfferStorage\MerchantProductOfferStorageConfig getConfig()
  * @method \Spryker\Zed\MerchantProductOfferStorage\Business\MerchantProductOfferStorageFacadeInterface getFacade()
  * @method \Spryker\Zed\MerchantProductOfferStorage\Communication\MerchantProductOfferStorageCommunicationFactory getFactory()
+ * @method \Spryker\Zed\MerchantProductOfferStorage\Business\MerchantProductOfferStorageBusinessFactory getBusinessFactory()
  */
 class MerchantProductConcreteProductOfferWritePublisherPlugin extends AbstractPlugin implements PublisherPluginInterface
 {
     /**
      * {@inheritDoc}
-     *  - Gets `merchantIds` from `eventTransfers`.
-     *  - Retrieves all active product offers by `merchantIds`.
-     *  - Publish active product offers data to `ProductConcreteProductOffersStorage`.
+     * - For `MerchantProductOfferStorage.product_concrete_product_offers_range.publish` events: writes the product concrete product offers storage of the concrete products that have product offers of the merchant in the product offer ID range of each event.
+     * - For merchant events: skips the events whose modified columns contain none of {@link \Spryker\Zed\MerchantProductOfferStorage\MerchantProductOfferStorageConfig::getProductOfferStorageRelevantMerchantColumns()}.
+     * - For merchant events: does not skip the events without modified columns.
+     * - For merchant events: splits the product offer IDs of each merchant into ranges of {@link \Spryker\Zed\MerchantProductOfferStorage\MerchantProductOfferStorageConfig::getMerchantProductOfferRangeSize()} product offers.
+     * - For merchant events: triggers one `MerchantProductOfferStorage.product_concrete_product_offers_range.publish` event per range.
      *
      * @api
      *
@@ -33,7 +36,9 @@ class MerchantProductConcreteProductOfferWritePublisherPlugin extends AbstractPl
      */
     public function handleBulk(array $eventEntityTransfers, $eventName)
     {
-        $this->getFacade()->writeProductConcreteProductOffersStorageCollectionByMerchantEvents($eventEntityTransfers);
+        $this->getBusinessFactory()
+            ->createProductConcreteProductOffersStoragePublisher()
+            ->publish($eventEntityTransfers, $eventName);
     }
 
     /**
@@ -48,6 +53,7 @@ class MerchantProductConcreteProductOfferWritePublisherPlugin extends AbstractPl
         return [
             MerchantProductOfferStorageConfig::ENTITY_SPY_MERCHANT_UPDATE,
             MerchantProductOfferStorageConfig::MERCHANT_PUBLISH,
+            MerchantProductOfferStorageConfig::PRODUCT_CONCRETE_PRODUCT_OFFERS_RANGE_PUBLISH,
         ];
     }
 }

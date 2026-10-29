@@ -18,10 +18,27 @@ interface MerchantProductOfferStorageRepositoryInterface
 
     /**
      * @param array<int> $merchantIds
-     * @param int $minIdProductOffer
-     * @param int $total
      *
      * @return iterable<array<string>>
      */
     public function iterateProductOfferReferencesByMerchantIds(array $merchantIds, int $minIdProductOffer = 0, int $total = 1000): iterable;
+
+    /**
+     * @param array<int> $merchantIds
+     *
+     * @return list<string>
+     */
+    public function getMerchantReferencesByMerchantIds(array $merchantIds): array;
+
+    /**
+     * @return iterable<list<int>> Pages of up to `$batchSize` IDs, ordered by ID.
+     */
+    public function iterateProductOfferIdsByMerchantReference(string $merchantReference, int $batchSize): iterable;
+
+    /**
+     * @param list<array{int, int}> $productOfferIdRanges The first and the last product offer ID of each range, both inclusive.
+     *
+     * @return list<\Generated\Shared\Transfer\ProductOfferTransfer>
+     */
+    public function getProductOffersByMerchantReferenceAndProductOfferIdRanges(string $merchantReference, array $productOfferIdRanges): array;
 }
