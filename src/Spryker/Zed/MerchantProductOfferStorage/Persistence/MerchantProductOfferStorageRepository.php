@@ -90,7 +90,9 @@ class MerchantProductOfferStorageRepository extends AbstractRepository implement
                 $lastIdProductOffer = (int)end($productOfferRows)[SpyProductOfferTableMap::COL_ID_PRODUCT_OFFER];
 
                 yield array_column($productOfferRows, SpyProductOfferTableMap::COL_PRODUCT_OFFER_REFERENCE);
-            } while (count($productOfferRows) === $total);
+
+                $hasNextBatch = count($productOfferRows) === $total;
+            } while ($hasNextBatch);
         }
     }
 
@@ -121,7 +123,9 @@ class MerchantProductOfferStorageRepository extends AbstractRepository implement
             $lastIdProductOffer = end($productOfferIds);
 
             yield $productOfferIds;
-        } while (count($productOfferIds) === $batchSize);
+
+            $hasNextIteration = count($productOfferIds) === $batchSize;
+        } while ($hasNextIteration);
     }
 
     /**
